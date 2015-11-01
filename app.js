@@ -61,6 +61,16 @@ app.post('/ask', function (req, res){
     "FROM public." + tabName + " \n" +
     "WHERE (part_number = 'D1IKXLL')";
 	console.log("query2: " + qString2);
+	
+	var q = "SELECT part_number,  srp_ref \n " +
+	"FROM public." + tabName +  "\n " +
+			"WHERE part_number = 'D1ILBLL' \n " +
+			"OR part_number = 'D1ILILL' \n " +
+			"OR part_number = 'D1ILKLL' \n " +
+			"OR part_number = 'D1ILNLL'";
+
+console.log("query: " + q);
+	
 	var client = new pg.Client(postgre_conn_string);
 	
 	client.connect(function(err) {
@@ -72,8 +82,17 @@ app.post('/ask', function (req, res){
 	      if (err) {
 	        res.end("Error running query: " + err);
 	      }
-	      res.end("PG Time: " + result.rows[0].pgTime);
-	      console.log("PG Time: " + result.rows[0].quantity_tier);
+	      console.log("Output: " + result.rows[0].quantity_tier);
+	      client.query(q, function(err, result) {
+		      if (err) {
+		        res.end("Error running query: " + err);
+		      }
+		      
+		      res.end("ending");
+		      console.log("srp_ref: " + result.rows[0].srp_ref);
+		      client.end();
+		    });
+	      
 	      client.end();
 	    });
 	  });
