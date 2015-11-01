@@ -1,0 +1,234 @@
+* {
+  text-decoration: none;
+  color: black;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin:0;
+  padding:0;
+}
+html {
+  width: 100%;
+}
+body {
+  background-color: white;
+  width: 100%;
+}
+
+div {
+  display: block;
+  
+ ;
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.selection {
+  margin: auto;
+  position: relative;
+  top: 50%; 
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
+.Box {
+  width: 100%;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+	cursor: pointer;
+}
+.logos {
+  display: inline-block;
+  width:7%;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 3%;
+  vertical-align: middle;
+	/* IE fix. */
+	display: inline;
+	zoom: 1;
+}
+#header1 {
+  width: 100%;
+}
+
+#header3 {
+  width: 100%;
+}
+
+#MC {
+  background-color: #00A6A0;
+}
+
+#SPOP {
+  background-color: #00B2EF;
+}
+
+#MCB2B {
+  background-color: #17AF4B;
+}
+
+#mainlogo {
+  width: 33%;
+}
+
+/* Forms CSS */
+
+.forms-small {
+  font-size: 0.6em;
+
+}
+
+.appear-mc {
+  background-color: #00B2EF;
+  width: 70%;
+  height: auto;
+  margin-top: 1em;
+  border-radius: 1em;
+  margin-right: 15%;
+  margin-left: 15%;
+}
+.appear-spop{
+  background-color: #00A6A0;
+  width: 70%;
+  height: auto;
+  margin-top: 1em;
+  border-radius: 1em;
+  margin-right: 15%;
+  margin-left: 15%;
+}
+
+.appear-mcb2b{
+  background-color: #BA006E;
+  width: 70%;
+  height: auto;
+  margin-top: 1em;
+  border-radius: 1em;
+  margin-right: 15%;
+  margin-left: 15%;
+}
+
+.transition {
+  height: 2.5em;
+}
+
+.button{
+    display: inline-block;
+    height:2em;
+	width:4em;
+	font-size: 0.8em;
+	border-radius: 5px;
+	text-align:center;
+	margin-top:2em;
+    margin-bottom: 2em;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+	cursor: pointer;
+}
+#button-mc {
+	background-color:#BA006E;
+}
+#button-mcb2b {
+	background-color:#00B2EF;
+}
+
+#button-spopb2c {
+	background-color:#BA006E;
+}
+
+.input_box {
+  display: block;
+  margin : 0 auto;
+  border-style:inset;
+  border-radius: 5px;
+}
+
+.list {
+	font-family:garamond;
+	color:red;
+    background-color: #BA006E ;
+	border-radius: 1em;
+    width: 45%;
+    text-align:center;
+    margin: auto;
+	margin-bottom: 3%;
+}
+
+
+.legal {
+	font-style: italic;
+	}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+select {
+  margin-bottom: 1.5em;
+}
+
+
+
+ /*==========  Mobile First Method  ==========*/
+
+	/* TEST */
+@media only screen and (min-width : 120px) and (max-width: 320px) {
+	body { font-size: 12px; }
+	.Box { height: 10px; }
+	.legal { font-size: 6px; }
+    }
+	
+	
+    /* Custom, iPhone Retina */ 
+    @media only screen and (min-width : 320px) and (max-width: 480px) {
+     body {
+            font-size:16px
+          }   
+		  .Box { height: 14em; }
+		  .legal { font-size: 8px; }
+    }
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (min-width : 480px) and (max-width: 768px) {
+          body {
+            font-size:18px
+          }  
+		.Box { height: 10em; }
+		.legal { font-size: 11px; }
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (min-width : 768px) and (max-width: 992px) {
+        body {
+            font-size:20px
+          }  
+		.Box { height: 8em; }
+		.legal { font-size: 12px; }
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (min-width : 992px) and (max-width: 1200px) {
+        body { font-size: 22px; }           
+		.Box { height: 6em; }
+		.legal { font-size: 13px; }
+    }
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (min-width : 1200px) {
+  body { font-size:25px; }  
+  .Box { height: 5em; }
+  .legal { font-size: 15px; }
+    }

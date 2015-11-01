@@ -1,0 +1,36 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'shrinkwrap' ]
+2 info using npm@2.11.3
+3 info using node@v0.12.7
+4 verbose stack Error: Problems were encountered
+4 verbose stack Please correct and try again.
+4 verbose stack missing: body-parser@^1.13.3, required by NodejsStarterApp@0.0.1
+4 verbose stack missing: cfenv@https://registry.npmjs.org/cfenv/-/cfenv-1.0.0.tgz, required by NodejsStarterApp@0.0.1
+4 verbose stack missing: express@https://registry.npmjs.org/express/-/express-4.12.4.tgz, required by NodejsStarterApp@0.0.1
+4 verbose stack missing: hogan.js@^3.0.2, required by NodejsStarterApp@0.0.1
+4 verbose stack     at shrinkwrap_ (C:\Program Files\nodejs\node_modules\npm\lib\shrinkwrap.js:37:15)
+4 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\shrinkwrap.js:31:5
+4 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\ls.js:47:30
+4 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:138:5
+4 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:251:14
+4 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+4 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:251:14
+4 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+4 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:251:14
+4 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+5 verbose cwd C:\Users\IBM_ADMIN\Documents\GitHub\BluemixNodeApp
+6 error Windows_NT 6.1.7601
+7 error argv "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "shrinkwrap"
+8 error node v0.12.7
+9 error npm  v2.11.3
+10 error Problems were encountered
+10 error Please correct and try again.
+10 error missing: body-parser@^1.13.3, required by NodejsStarterApp@0.0.1
+10 error missing: cfenv@https://registry.npmjs.org/cfenv/-/cfenv-1.0.0.tgz, required by NodejsStarterApp@0.0.1
+10 error missing: express@https://registry.npmjs.org/express/-/express-4.12.4.tgz, required by NodejsStarterApp@0.0.1
+10 error missing: hogan.js@^3.0.2, required by NodejsStarterApp@0.0.1
+11 error If you need help, you may report this error at:
+11 error     <https://github.com/npm/npm/issues>
+12 verbose exit [ 1, true ]

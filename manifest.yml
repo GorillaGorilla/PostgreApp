@@ -1,0 +1,14 @@
+---
+declared-services:
+  PostgreSQL:
+    label: user-provided
+applications:
+- services:
+  - PostgreSQL
+  disk_quota: 1024M
+  name: SSP-Pricing-Dev
+  host: ssp-pricing-dev
+  path: .
+  domain: mybluemix.net
+  instances: 1
+  memory: 2048M
