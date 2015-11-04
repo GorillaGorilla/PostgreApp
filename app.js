@@ -57,46 +57,74 @@ app.post('/ask', function (req, res){
 			break;
 	};
 	
-	var qString2 = "SELECT quantity_tier,  srp_ref \n" +
-    "FROM public." + tabName + " \n" +
-    "WHERE (part_number = 'D1IKXLL')";
-	console.log("query2: " + qString2);
+//	branch for products
 	
-	var q = "SELECT part_number,  srp_ref \n " +
-	"FROM public." + tabName +  "\n " +
+	if (req.body.product == "B2C"){
+//		B2C button was pressed
+		var events = req.body.interactions/1000;
+	
+		var q1 = "SELECT quantity_tier,  srp_ref \n" +
+		"FROM public." + tabName + " \n" +
+		"WHERE (part_number = 'D1IKXLL')";
+		console.log("query2: " + q1);
+	
+		var q2 = "SELECT part_number,  srp_ref \n " +
+		"FROM public." + tabName +  "\n " +
 			"WHERE part_number = 'D1ILBLL' \n " +
 			"OR part_number = 'D1ILILL' \n " +
 			"OR part_number = 'D1ILKLL' \n " +
 			"OR part_number = 'D1ILNLL'";
 
-console.log("query: " + q);
+		console.log("query: " + q2);
+		var client = new pg.Client(postgre_conn_string);
+		client.connect(function(err) {
+			if (err) {
+				res.end("Could not connect to postgre: " + err);
+// 		    	make all references to res return error
+			}
+			console.log("connection opened");
+			client.query(q1, function(err, result) {
+				if (err) {
+					res.end("Error running query: " + err);
+				}
+				console.log("Output: " + result.rows[0].quantity_tier);
+				var cost = cummulativeTierCalc(result.rows, events);
+				client.query(q2, function(err, result) {
+					if (err) {
+						res.end("Error running query: " + err);
+					};
+					console.log("returnedValue: " + returnedValue);
+					var B2CSetup = Number(returnedValue[3].srp_ref);
+					var StandardAccess = returnedValue[0].srp_ref;
+					var mcinsightsP = returnedValue[2].srp_ref;
+					var mcusersP = returnedValue[1].srp_ref;
+					
+//					calculates price from returned value
+					var priceEstimateM = (cost +
+							Number(StandardAccess) + 
+							Number(req.body.mcusers)*Number(mcusersP) + 
+							Number(req.body.mcinsights)*Number(mcinsightsP)/100000);
+					var priceEstimateY = priceEstimateM*12;
+							
+					res.send({pricem : priceEstimateM, 	pricey : priceEstimateY, b2csetup : B2CSetup});
+					res.end();
+					client.end();
+				});
+				client.end();
+			});
+		});
+
+	} else if (req.body.product == "B2B"){
+		
+	};
+
+
 	
-	var client = new pg.Client(postgre_conn_string);
-	
-	client.connect(function(err) {
-	    if (err) {
-	      res.end("Could not connect to postgre: " + err);
-	    }
-	    console.log("connection opened");
-	    client.query(qString2, function(err, result) {
-	      if (err) {
-	        res.end("Error running query: " + err);
-	      }
-	      console.log("Output: " + result.rows[0].quantity_tier);
-	      client.query(q, function(err, result) {
-		      if (err) {
-		        res.end("Error running query: " + err);
-		      }
-		      
-		      res.end("ending");
-		      console.log("srp_ref: " + result.rows[0].srp_ref);
-		      client.end();
-		    });
-	      
-	      client.end();
-	    });
-	  });
 	});
+
+function doQueries(q1, q2, quantity){
+
+};
 
 function cummulativeTierCalc(rows, num){
 	var cost = 0;
