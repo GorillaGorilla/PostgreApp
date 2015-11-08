@@ -75,6 +75,10 @@ img {
   background-color: #17AF4B;
 }
 
+#SPOPB2B {
+    background-color: #BA006E;
+}
+
 #mainlogo {
   width: 33%;
 }
@@ -115,6 +119,16 @@ img {
   margin-left: 15%;
 }
 
+.appear-spopb2b{
+    background-color: #17AF4B;
+    width: 70%;
+    height: auto;
+    margin-top: 1em;
+    border-radius: 1em;
+    margin-right: 15%;
+    margin-left: 15%;
+}
+
 .transition {
   height: 2.5em;
 }
@@ -145,9 +159,12 @@ img {
 }
 
 #button-spopb2c {
-	background-color:#BA006E;
+    background-color:#BA006E;
 }
 
+#button-spopb2b {
+    background-color: #00B2EF;
+}
 .input_box {
   display: block;
   margin : 0 auto;
@@ -184,10 +201,10 @@ select {
 
  /*==========  Mobile First Method  ==========*/
 
-	/* TEST */
+	/* MIN DISPLAY */
 @media only screen and (min-width : 120px) and (max-width: 320px) {
 	body { font-size: 12px; }
-	.Box { height: 10px; }
+	.Box { height: 9.8px; }
 	.legal { font-size: 6px; }
     }
 	
@@ -197,7 +214,7 @@ select {
      body {
             font-size:16px
           }   
-		  .Box { height: 14em; }
+		  .Box { height: 13.8em; }
 		  .legal { font-size: 8px; }
     }
 
@@ -206,7 +223,7 @@ select {
           body {
             font-size:18px
           }  
-		.Box { height: 10em; }
+		.Box { height: 9.8em; }
 		.legal { font-size: 11px; }
     }
 
@@ -215,20 +232,20 @@ select {
         body {
             font-size:20px
           }  
-		.Box { height: 8em; }
+		.Box { height: 7.8em; }
 		.legal { font-size: 12px; }
     }
 
     /* Medium Devices, Desktops */
     @media only screen and (min-width : 992px) and (max-width: 1200px) {
         body { font-size: 22px; }           
-		.Box { height: 6em; }
+		.Box { height: 5.8em; }
 		.legal { font-size: 13px; }
     }
 
     /* Large Devices, Wide Screens */
     @media only screen and (min-width : 1200px) {
   body { font-size:25px; }  
-  .Box { height: 5em; }
+  .Box { height: 4.8em; }
   .legal { font-size: 15px; }
     }

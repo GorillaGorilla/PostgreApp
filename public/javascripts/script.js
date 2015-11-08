@@ -1,12 +1,13 @@
 /* Hide Forms Initially */ 
 
 $(document).ready(function() {
-  $('.appear-spop').hide();
-  $('.appear-mc').hide();
-  $('.appear-mcb2b').hide();
+	$('.appear-spop').hide();
+	$('.appear-mc').hide();
+	$('.appear-mcb2b').hide();
+	$('.appear-spopb2b').hide();
 });
 
-/* Switch B2C Form On & Hide everything else */
+/* Switch MC B2C Form On & Hide everything else */
 
 $(document).ready(function() {
   $('#MC').click(function() {
@@ -17,26 +18,37 @@ $(document).ready(function() {
 	});
   });
 
-/* Switch Silverpop Form On & Hide everything else */
+/* Switch MC B2B Form On & Hide everything else */
+
+$(document).ready(function() {
+	$('#MCB2B').click(function() {
+		$('.hide-mcb2b').hide(1000);
+		$('.appear-mcb2b').fadeIn(1000);
+		$(this).addClass('transition');
+		window.product = "B2B";
+	});
+});
+
+/* Switch Silverpop B2C Form On & Hide everything else */
 
 $(document).ready(function() {
   $('#SPOP').click(function() {
     $('.hide-spop').hide(1000);
     $('.appear-spop').fadeIn(1000);
     $(this).addClass('transition');
-    window.product = "SPOP";
+    window.product = "spopB2c";
   });    
 });
 
-/* Switch B2B Form On & Hide everything else */
+/* Switch Silverpop B2C Form On & Hide everything else */
 
 $(document).ready(function() {
-  $('#MCB2B').click(function() {
-    $('.hide-mcb2b').hide(1000);
-    $('.appear-mcb2b').fadeIn(1000);
-    $(this).addClass('transition');
-    window.product = "B2B";
-  });   
+	$('#SPOPB2B').click(function() {
+		$('.hide-spopb2b').hide(1000);
+		$('.appear-spopb2b').fadeIn(1000);
+		$(this).addClass('transition');
+		window.product = "spopB2b";
+	});
 });
 
 ////* Form Styles */////
@@ -62,7 +74,7 @@ $(document).ready(function() {
 		var MCInsights = $('input[name=MCInsights]').val();
 		var currency = "$";
 		if (country == "US") { currency = "$"; } else if (country == "UK") { currency = "£"; } else if (country == "AUS") { currency = "$"; } else { currency = "€"; }
-		qDat = {country : country, mcusers : MCUsers, interactions : MCInteractions, product : "B2C", mcinsights : MCInsights };
+		qDat = {country : country, mcusers : MCUsers, interactions : MCInteractions, product : window.product, mcinsights : MCInsights };
 		$(".list").css("background-color","#BA006E");
 		$.post("/ask",qDat, function(data){
 			$(".list").append('<div class="item">' + "Monthly Price: " + currency + data.pricem.toFixed() +  "<p></p>" +  "Yearly Price: " + currency + data.pricey.toFixed() +  "<p></p>" + "One-Time Setup Price: " + currency + data.b2csetup.toFixed() + "<p></p>" + '</div>');	
@@ -85,7 +97,7 @@ $(document).ready(function() {
 		var MCInsights = $('input[name=MCInsightsB2B]').val();
 		var currency = "$";
 		if (country == "US") { currency = "$"; } else if (country == "UK") { currency = "£"; } else if (country == "AUS") { currency = "$"; } else { currency = "€"; }
-		qDat = {country : country, mcusers : MCUsers, dbrec : MCDBRec, product : "B2B" , mcinsights : MCInsights};
+		qDat = {country : country, mcusers : MCUsers, dbrec : MCDBRec, product : window.product , mcinsights : MCInsights};
 		$(".list").css("background-color","#00B2EF");
 		$.post("/ask",qDat, function(data){
 			$(".list").append('<div class="item">' + "Monthly Price: " + currency + data.pricem.toFixed() +  "<p></p>" +  "Yearly Price: " + currency + data.pricey.toFixed() +  "<p></p>" + "One-Time Setup Price: " + currency + data.b2bsetup.toFixed() + "<p></p>" + '</div>');
@@ -104,12 +116,12 @@ $(document).ready(function() {
 		$('#button-spopb2c').attr('disabled',true);
 		var country = $('#countrySpopB2c').val(); 
 		var SpopMsg = $('input[name=spopB2cMsg]').val();
-		var SpopInsights = $('#spopb2cinsights').val();   // this line needs to be fixed so that it works.
+		var SpopInsights = $('#spopb2cinsights').val();
 		var currency = "$";
 		if (country == "US") { currency = "$"; } else if (country == "UK") { currency = "£"; } else if (country == "AUS") { currency = "$"; } else { currency = "€"; }
 		qDat = {country : country, 
 				spopmsg : SpopMsg, 
-				product : "spopB2c" , 
+				product : window.product,
 				spopinsights : SpopInsights};
 		$(".list").css("background-color","#BA006E");
 		$.post("/ask",qDat, function(data){
@@ -119,7 +131,33 @@ $(document).ready(function() {
 			$('#button-spopb2c').attr('disabled',false);
 		}, 1000);
 	});
-});	
+});
+
+
+/* Silverpop B2B Form */
+
+$(document).ready(function() {
+    $('#button-spopb2b').click(function() {
+        $(".list").html("");
+        $('#button-spopb2b').attr('disabled',true);
+        var country = $('#countrySpopB2b').val();
+        var SpopDb = $('input[name=spopB2bDb]').val();
+        var SpopInsights = $('#spopb2binsights').val();
+        var currency = "$";
+        if (country == "US") { currency = "$"; } else if (country == "UK") { currency = "£"; } else if (country == "AUS") { currency = "$"; } else { currency = "€"; }
+        qDat = {country : country,
+            spopdb : SpopDb,
+            product : window.product,
+            spopinsights : SpopInsights};
+        $(".list").css("background-color","#00B2EF");
+        $.post("/ask",qDat, function(data){
+            $(".list").append('<div class="item">' + "Monthly Price: " + currency + data.pricem.toFixed() +  "<p></p>" +  "Yearly Price: " + currency + data.pricey.toFixed() +  "<p></p>" + "One-Time Setup Price: " + currency + data.spopsetupb2b.toFixed() + "<p></p>" + '</div>');
+        });
+        setTimeout(function() {
+            $('#button-spopb2b').attr('disabled',false);
+        }, 1000);
+    });
+});
 
 
 /* Disable Backspace */

@@ -187,21 +187,33 @@ app.post('/ask', function (req, res){
 
         //		Silverpop B2C button was pressed
 
+		var plan = "";
+
+		switch (req.body.spopinsights){
+			case "platinum" :  plan = "OR \"part_number\" = 'D1AVWLL'";
+				break;
+			case "bronze" : plan = "OR \"part_number\" = 'D1AVNLL'";
+				break;
+			case "silver" :	plan = "OR \"part_number\" = 'D1AVSLL'";
+				break;
+			case "gold" :	plan = "OR \"part_number\" = 'D1AVULL'";
+				break;
+		}
+
         var SpopMsg = req.body.spopmsg/1000;
+
 
         var q1 = "SELECT quantity_tier,  srp_ref \n" +
             "FROM public." + tabName + " \n" +
-            "WHERE (part_number = 'D1ILFLL')";
-        console.log("MCB2B query1: " + q1);
+            "WHERE (part_number = 'D1AVQLL')";
+        console.log("SPOPB2C query1: " + q1);
 
         var q2 = "SELECT part_number,  srp_ref \n " +
             "FROM public." + tabName +  "\n " +
-            "WHERE part_number = 'D1ILBLL' \n " +
-            "OR part_number = 'D1ILILL' \n " +
-            "OR part_number = 'D1ILKLL' \n " +
-            "OR part_number = 'D1ILNLL'";
+            "WHERE part_number = 'D1AW9LL' \n " +
+            plan;
 
-        console.log("MCB2B query2: " + q2);
+        console.log("SPOPB2C query2: " + q2);
         var client = new pg.Client(postgre_conn_string);
         client.connect(function(err) {
             if (err) {
@@ -213,55 +225,118 @@ app.post('/ask', function (req, res){
                 if (err) {
                     res.end("Error running query: " + err);
                 }
-                console.log("Output: " + result.rows[0].quantity_tier);
-                var cost = cummulativeTierCalc(result.rows, dbRecords);
+                console.log("Output: " + result.rows[0]['quantity_tier']);
+                var cost = cummulativeTierCalc(result.rows, SpopMsg);
 
                 client.query(q2, function(err, result) {
                     if (err) {
                         res.end("Error running query: " + err);
                     }
                     console.log("returnedValue: " + result);
-                    var B2BSetup = Number(result.rows[3]['srp_ref']);
-                    var StandardAccess = result.rows[0]['srp_ref'];
-                    var mcinsightsP = result.rows[2]['srp_ref'];
-                    var mcusersP = result.rows[1]['srp_ref'];
+					var priceEstimateM = 0;
+					if(plan == ""){
+						var setup = Number(result.rows[0]['srp_ref']);
+						priceEstimateM = (Number(cost));
+					}else{
+						var planCost = result.rows[0]['srp_ref'];
+						var setup = Number(result.rows[1]['srp_ref']);
+						priceEstimateM = (Number(cost)) + Number(planCost);
+					}
 
-                    console.log("B2B setup: " + B2BSetup);
-                    console.log("StandardAccess: " + StandardAccess);
-                    console.log("mcinsightsP: " + mcinsightsP);
-                    console.log("mcusersP: " + mcusersP);
+                    console.log("SPOPB2C setup: " + setup);
+                    console.log("planCost: " + planCost);
+					console.log("cost :" + cost);
 
 //					calculates price from returned value
-                    var priceEstimateM = (cost +
-                    Number(StandardAccess) +
-                    Number(req.body.mcusers)*Number(mcusersP) +
-                    Number(req.body.mcinsights)*Number(mcinsightsP)/100000);
-                    var priceEstimateY = priceEstimateM*12;
-                    console.log("Cost: " + cost);
-                    console.log("PriceM: " + priceEstimateM);
-                    console.log("PriceY: " + priceEstimateY);
-                    console.log("b2bsetup: " + B2BSetup);
+					var priceEstimateY = priceEstimateM*12;
 
-                    res.send({pricem : priceEstimateM, 	pricey : priceEstimateY, b2bsetup : B2BSetup});
-                    res.end();
+					res.send({pricem : priceEstimateM, 	pricey : priceEstimateY, spopsetup : setup});
+					res.end();
                     client.end();
                 });
                 client.end();
             });
         });
-
-
-
-
-
-
-
-
-
     }
+	else if (req.body.product == "spopB2b") {
 
-	
-	});
+		//		Silverpop B2B button was pressed
+
+		var plan = "";
+
+		switch (req.body.spopinsights){
+			case "platinum" :  plan = "OR \"part_number\" = 'D1AVWLL'";
+				break;
+			case "bronze" : plan = "OR \"part_number\" = 'D1AVNLL'";
+				break;
+			case "silver" :	plan = "OR \"part_number\" = 'D1AVSLL'";
+				break;
+			case "gold" :	plan = "OR \"part_number\" = 'D1AVULL'";
+				break;
+		}
+
+		var SpopDB = req.body.spopdb/10000;
+
+
+		var q1 = "SELECT quantity_tier,  srp_ref \n" +
+				"FROM public." + tabName + " \n" +
+				"WHERE (part_number = 'D1AWHLL')";
+		console.log("SPOPB2B query1: " + q1);
+
+		var q2 = "SELECT part_number,  srp_ref \n " +
+				"FROM public." + tabName +  "\n " +
+				"WHERE part_number = 'D1AW9LL' \n " +
+				plan;
+
+		console.log("SPOPB2C query2: " + q2);
+		var client = new pg.Client(postgre_conn_string);
+		client.connect(function(err) {
+			if (err) {
+				res.end("Could not connect to postgre: " + err);
+// 		    	make all references to res return error
+			}
+			console.log("connection opened");
+			client.query(q1, function(err, result) {
+				if (err) {
+					res.end("Error running query: " + err);
+				}
+				console.log("Output: " + result.rows[0]['quantity_tier']);
+				var cost = cummulativeTierCalc(result.rows, SpopDB);
+
+				client.query(q2, function(err, result) {
+					if (err) {
+						res.end("Error running query: " + err);
+					}
+					console.log("returnedValue: " + result);
+					var priceEstimateM = 0;
+					if(plan == ""){
+						var setup = Number(result.rows[0]['srp_ref']);
+						priceEstimateM = (Number(cost));
+					}else{
+						var planCost = result.rows[0]['srp_ref'];
+						var setup = Number(result.rows[1]['srp_ref']);
+						priceEstimateM = (Number(cost)) + Number(planCost);
+					}
+
+					console.log("SPOPB2B setup: " + setup);
+					console.log("planCost: " + planCost);
+					console.log("cost :" + cost);
+
+//					calculates price from returned value
+					var priceEstimateY = priceEstimateM*12;
+
+					res.send({pricem : priceEstimateM, 	pricey : priceEstimateY, spopsetupb2b : setup});
+					res.end();
+					client.end();
+				});
+				client.end();
+			});
+		});
+	}
+
+
+
+});
 
 function doQueries(q1, q2, quantity){
 
