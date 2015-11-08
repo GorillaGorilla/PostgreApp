@@ -9,3 +9,5 @@ node_modules\cfenv
 node_modules\body-parser
 node_modules\pg.js
 node_modules\.bin
+.idea\*
+.idea\
