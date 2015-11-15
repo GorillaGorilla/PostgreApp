@@ -42,20 +42,22 @@ if (process.env.VCAP_SERVICES) {
 	var postgre_conn_string = 'postgres://'+postgre_username+':'+postgre_password+'@'+postgre_public_hostname+'/compose';
 }
 
-
+var countryLinks = 
+	[
+	{name : "UK",
+	 table : "saas_uk_pricing"},
+	{name : "EUR",
+	  table : "saas_uk_pricing"},
+	{name : "AUS",
+	 table : "saas_aus_pricing"},
+	{name : "US",
+	 table : "saas_us_pricing"}
+	];
 
 app.post('/ask', function (req, res){
 //	calculate cost
-	switch (req.body.country){
-	case "UK" :  tabName = "saas_uk_pricing";
-			break;
-	case "EUR" : tabName = "saas_eur_pricing";
-			break;
-	case "US" :	tabName = "saas_us_pricing";
-			break;
-	case "AUS" :	tabName = "saas_aus_pricing";
-			break;
-	}
+	
+	tabName = writeTabnameCountries(req.body.country, countryLinks);
 	
 //	branch for products
 	
@@ -199,6 +201,8 @@ app.post('/ask', function (req, res){
 			case "gold" :	plan = "OR \"part_number\" = 'D1AVULL'";
 				break;
 		}
+		
+		
 
         var SpopMsg = req.body.spopmsg/1000;
 
@@ -340,6 +344,17 @@ app.post('/ask', function (req, res){
 
 function doQueries(q1, q2, quantity){
 
+};
+
+
+function writeTabnameCountries(input, countries){
+//	cycle through list and compare against 
+	for (i = 0; i<countries.length; i++){
+		if (countries[i].name == input){
+			return countries[i].table;
+		};
+	};
+	return countries[0].table;
 };
 
 function cummulativeTierCalc(rows, num){
