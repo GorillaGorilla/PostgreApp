@@ -73,7 +73,38 @@ $(document).ready(function() {
 		var MCInteractions = $('input[name=MCInteractions]').val();
 		var MCInsights = $('input[name=MCInsights]').val();
 		var currency = "$";
-		if (country == "US") { currency = "$"; } else if (country == "UK") { currency = "£"; } else if (country == "AUS") { currency = "$"; } else { currency = "€"; }
+		switch (country) {
+			case "US":
+				currency = "$";
+				break;
+
+			case "UK":
+				currency = "£";
+				break;
+
+			case "AUS":
+				currency = "$";
+				break;
+
+			case "ZAR":
+				currency = "R";
+				break;
+
+			case "SGD":
+				currency = "S$";
+				break;
+
+			case "NZD":
+				currency = "$";
+				break;
+
+			case "INR":
+				currency = "₹";
+				break;
+			default:
+				currency = "€";
+				break;
+		}
 		qDat = {country : country, mcusers : MCUsers, interactions : MCInteractions, product : window.product, mcinsights : MCInsights };
 		$(".list").css("background-color","#BA006E");
 		$.post("/ask",qDat, function(data){
@@ -96,7 +127,38 @@ $(document).ready(function() {
 		var MCDBRec = $('input[name=DBRecords]').val();
 		var MCInsights = $('input[name=MCInsightsB2B]').val();
 		var currency = "$";
-		if (country == "US") { currency = "$"; } else if (country == "UK") { currency = "£"; } else if (country == "AUS") { currency = "$"; } else { currency = "€"; }
+		switch (country) {
+			case "US":
+				currency = "$";
+				break;
+
+			case "UK":
+				currency = "£";
+				break;
+
+			case "AUS":
+				currency = "$";
+				break;
+
+			case "ZAR":
+				currency = "R";
+				break;
+
+			case "SGD":
+				currency = "S$";
+				break;
+
+			case "NZD":
+				currency = "$";
+				break;
+
+			case "INR":
+				currency = "₹";
+				break;
+			default:
+				currency = "€";
+				break;
+		}
 		qDat = {country : country, mcusers : MCUsers, dbrec : MCDBRec, product : window.product , mcinsights : MCInsights};
 		$(".list").css("background-color","#00B2EF");
 		$.post("/ask",qDat, function(data){
@@ -118,7 +180,38 @@ $(document).ready(function() {
 		var SpopMsg = $('input[name=spopB2cMsg]').val();
 		var SpopInsights = $('#spopb2cinsights').val();
 		var currency = "$";
-		if (country == "US") { currency = "$"; } else if (country == "UK") { currency = "£"; } else if (country == "AUS") { currency = "$"; } else { currency = "€"; }
+		switch (country) {
+			case "US":
+				currency = "$";
+				break;
+
+			case "UK":
+				currency = "£";
+				break;
+
+			case "AUS":
+				currency = "$";
+				break;
+
+			case "ZAR":
+				currency = "R";
+				break;
+
+			case "SGD":
+				currency = "S$";
+				break;
+
+			case "NZD":
+				currency = "$";
+				break;
+
+			case "INR":
+				currency = "₹";
+				break;
+			default:
+				currency = "€";
+				break;
+		}
 		qDat = {country : country, 
 				spopmsg : SpopMsg, 
 				product : window.product,
@@ -144,7 +237,38 @@ $(document).ready(function() {
         var SpopDb = $('input[name=spopB2bDb]').val();
         var SpopInsights = $('#spopb2binsights').val();
         var currency = "$";
-        if (country == "US") { currency = "$"; } else if (country == "UK") { currency = "£"; } else if (country == "AUS") { currency = "$"; } else { currency = "€"; }
+		switch (country) {
+			case "US":
+				currency = "$";
+				break;
+
+			case "UK":
+				currency = "£";
+				break;
+
+			case "AUS":
+				currency = "$";
+				break;
+
+			case "ZAR":
+				currency = "R";
+				break;
+
+			case "SGD":
+				currency = "S$";
+				break;
+
+			case "NZD":
+				currency = "$";
+				break;
+
+			case "INR":
+				currency = "₹";
+				break;
+			default:
+				currency = "€";
+				break;
+		}
         qDat = {country : country,
             spopdb : SpopDb,
             product : window.product,

@@ -124,17 +124,42 @@ if (process.env.VCAP_SERVICES) {
 	var postgre_conn_string = 'postgres://'+postgre_username+':'+postgre_password+'@'+postgre_public_hostname+'/compose';
 }
 
-var countryLinks = 
-	[
-	{name : "UK",
-	 table : "saas_uk_pricing"},
-	{name : "EUR",
-	  table : "saas_uk_pricing"},
-	{name : "AUS",
-	 table : "saas_aus_pricing"},
-	{name : "US",
-	 table : "saas_us_pricing"}
-	];
+var countryLinks;
+countryLinks = [
+	{
+		name: "UK",
+		table: "saas_uk_pricing"
+	},
+	{
+		name: "EUR",
+		table: "saas_uk_pricing"
+	},
+	{
+		name: "AUS",
+		table: "saas_aus_pricing"
+	},
+	{
+		name: "US",
+		table: "saas_us_pricing"
+	},
+	{
+		name: "ZAR",
+		table: "saas_zar_pricing"
+	},
+	{
+		name: "SGD",
+		table: "saas_sgd_pricing"
+	},
+	{
+		name: "NZD",
+		table: "saas_nzd_pricing"
+	},
+	{
+		name: "INR",
+		table: "saas_inr_pricing"
+	},
+
+];
 
 app.post('/ask', function (req, res){
 //	calculate cost
@@ -219,26 +244,26 @@ app.post('/ask', function (req, res){
 		
 
 
-		if (req.enterprise == false){
-//			B2B standard
+		if (req.enterprise == true){
+//			B2B enterprise
 			var q2 = "SELECT part_number,  srp_ref \n " +
-				"FROM public." + tabName +  "\n " +
-				"WHERE part_number = 'D1ILBLL' \n " +
-				"OR part_number = 'D1ILILL' \n " +
-				"OR part_number = 'D1ILKLL' \n " +
-				"OR part_number = 'D1ILNLL'";
+					"FROM public." + tabName +  "\n " +
+					"WHERE part_number = 'D1K5VLL' \n " +
+					"OR part_number = 'D1ILILL' \n " +
+					"OR part_number = 'D1ILKLL' \n " +
+					"OR part_number = 'D1K62LL'";
 			
 			
 			
 			
 		}else{
-//			B2B enterprise
+//			B2B standard
 			var q2 = "SELECT part_number,  srp_ref \n " +
-			"FROM public." + tabName +  "\n " +
-			"WHERE part_number = 'D1K5VLL' \n " +
-			"OR part_number = 'D1ILILL' \n " +
-			"OR part_number = 'D1ILKLL' \n " +
-			"OR part_number = 'D1K62LL'";
+					"FROM public." + tabName +  "\n " +
+					"WHERE part_number = 'D1ILBLL' \n " +
+					"OR part_number = 'D1ILILL' \n " +
+					"OR part_number = 'D1ILKLL' \n " +
+					"OR part_number = 'D1ILNLL'";
 			
 		}
 		
