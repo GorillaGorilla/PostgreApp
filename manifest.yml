@@ -5,10 +5,11 @@ declared-services:
 applications:
 - services:
   - PostgreSQL
+  - Single Sign On-b8
   disk_quota: 1024M
-  name: SSP-Pricing-Dev
-  host: ssp-pricing-dev
+  name: SSP Pricing Beta
+  host: ssp-pricing-beta
   path: .
   domain: mybluemix.net
   instances: 1
-  memory: 2048M
+  memory: 4096M

@@ -1,3 +1,4 @@
+﻿.idea/
 launchConfigurations/
 node_modules\passport
 node_modules\ibm_db
@@ -9,4 +10,3 @@ node_modules\cfenv
 node_modules\body-parser
 node_modules\.bin
 node_modules\pg.js
-.idea\

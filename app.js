@@ -11,8 +11,10 @@ var express = require('express');
 var bodyParser = require("body-parser");
 var psql;
 
-//var hogan = require('hogan-express');
-//var path = require('path');
+var passport = require('passport');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var OpenIDConnectStrategy = require('passport-idaas-openidconnect').IDaaSOIDCStrategy;
 
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
@@ -31,6 +33,86 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+
+// more Single Sing on stuff
+app.use(cookieParser());
+app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+    done(null, obj);
+});
+
+
+var services = JSON.parse(process.env.VCAP_SERVICES || "{}");
+var ssoConfig = services.SingleSignOn[0];
+var client_id = ssoConfig.credentials.clientId;
+var client_secret = ssoConfig.credentials.secret;
+var authorization_url = ssoConfig.credentials.authorizationEndpointUrl;
+var token_url = ssoConfig.credentials.tokenEndpointUrl;
+var issuer_id = ssoConfig.credentials.issuerIdentifier;
+var callback_url = 'https://ssp-pricing-beta.mybluemix.net/auth/sso/callback';
+
+var OpenIDConnectStrategy = require('passport-idaas-openidconnect').IDaaSOIDCStrategy;
+var Strategy = new OpenIDConnectStrategy({
+    authorizationURL : authorization_url,
+    tokenURL : token_url,
+    clientID : client_id,
+    scope: 'openid',
+    response_type: 'code',
+    clientSecret : client_secret,
+    callbackURL : callback_url,
+    skipUserProfile: true,
+    issuer: issuer_id
+}, function(accessToken, refreshToken, profile, done) {
+    process.nextTick(function() {
+        profile.accessToken = accessToken;
+        profile.refreshToken = refreshToken;
+        done(null, profile);
+    });
+});
+
+passport.use(Strategy);
+app.get('/login', passport.authenticate('openidconnect', {}));
+
+function ensureAuthenticated(req, res, next) {
+    if(!req.isAuthenticated()) {
+        req.session.originalUrl = req.originalUrl;
+        res.redirect('/login');
+    } else {
+        console.log("returning next")
+        return next();
+    }
+}
+
+app.get('/auth/sso/callback',function(req,res,next) {
+    var redirect_url = req.session.originalUrl;
+    console.log("authenticating");
+    passport.authenticate('openidconnect', {
+        successRedirect: '/index.html',
+        failureRedirect: '/failure',
+    })(req,res,next);
+});
+
+app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+});
+
+app.get('/failure', function(req, res) {
+    res.send('Login failed');
+});
+
+app.get('*', ensureAuthenticated);
+
+// End of Single Sign on Stuff
+
+// Set up DB Connections
 
 
 if (process.env.VCAP_SERVICES) {
@@ -72,7 +154,7 @@ app.post('/ask', function (req, res){
 
 		var q2 = "SELECT part_number,  srp_ref \n " +
 		"FROM public." + tabName +  "\n " +
-			"WHERE part_number = 'D1ILBLL' \n " +
+			"WHERE part_number = 'D1IKBLL' \n " +
 			"OR part_number = 'D1ILILL' \n " +
 			"OR part_number = 'D1ILKLL' \n " +
 			"OR part_number = 'D1ILMLL'";
@@ -95,7 +177,7 @@ app.post('/ask', function (req, res){
 			client.query(q2, function(err, result) {
 					if (err) {
 						res.end("Error running query: " + err);
-					}
+					}	
 					console.log("returnedValue: " + result);
 					var B2CSetup = Number(result.rows[3]['srp_ref']);
 					var StandardAccess = result.rows[0]['srp_ref'];
