@@ -127,13 +127,39 @@ app.post('/ask', function (req, res){
 				"FROM public." + tabName + " \n" +
 				"WHERE (part_number = 'D1ILFLL')";
 		console.log("MCB2B query1: " + q1);
+		
+//		parts for IBM marketing Cloud:
+//		IBM Marketing Cloud B2B Standard Access per Month
+//		IBM Marketing Cloud Additional User Authorized User per Month
+//		IBM Marketing Cloud Additional Email Insights Opens Hundred Thousand Events per Month
+//		IBM Marketing Cloud B2B Standard Onboarding Services Engagement One-Time Set Up
+//		Standard access and Onboarding Services Engagement differ depending on enterprise or standard
+		
 
-		var q2 = "SELECT part_number,  srp_ref \n " +
+
+		if (req.enterprise == false){
+//			B2B standard
+			var q2 = "SELECT part_number,  srp_ref \n " +
 				"FROM public." + tabName +  "\n " +
 				"WHERE part_number = 'D1ILBLL' \n " +
 				"OR part_number = 'D1ILILL' \n " +
 				"OR part_number = 'D1ILKLL' \n " +
 				"OR part_number = 'D1ILNLL'";
+			
+			
+			
+			
+		}else{
+//			B2B enterprise
+			var q2 = "SELECT part_number,  srp_ref \n " +
+			"FROM public." + tabName +  "\n " +
+			"WHERE part_number = 'D1K5VLL' \n " +
+			"OR part_number = 'D1ILILL' \n " +
+			"OR part_number = 'D1ILKLL' \n " +
+			"OR part_number = 'D1K62LL'";
+			
+		}
+		
 
 		console.log("MCB2B query2: " + q2);
 		var client = new pg.Client(postgre_conn_string);
