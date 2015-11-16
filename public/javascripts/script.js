@@ -61,7 +61,20 @@ $(document).ready(function() {
 });
 
 
-/* Marketing Cloud B2C Form */ 
+/* Marketing Cloud B2C Form */
+
+$('#packageb2c').change(function() {
+	if (this.value == "true") {
+		$('#B2cInteractionsChange').text('Does the customer need additional marketing interactions beyond the 750,000 included in the Marketing Cloud Enterprise subscription?');
+		$('#B2cUsersChange').text('Does the customer need additional users beyond the 10  included in the Marketing Cloud Enterprise subscription?');
+		$('#B2cInsightsChange').text('Does the customer need additional email insights opens beyond the 400,000 included in the Marketing Cloud Enterprise subscription? ');
+	}
+	else {
+		$('#B2cInteractionsChange').text('Does the customer need additional marketing interactions beyond the 250,000 included in the Marketing Cloud Standard subscription?');
+		$('#B2cUsersChange').text('Does the customer need additional users beyond the 5  included in the Marketing Cloud Standard subscription?');
+		$('#B2cInsightsChange').text('Does the customer need additional email insights opens beyond the 200,000 included in the Marketing Cloud Standard subscription?');
+	}
+});
 
 
 $(document).ready(function() {
@@ -73,6 +86,7 @@ $(document).ready(function() {
 		var MCInteractions = $('input[name=MCInteractions]').val();
 		var MCInsights = $('input[name=MCInsights]').val();
 		var currency = "$";
+		var package = $('#packageb2c').val();
 		switch (country) {
 			case "US":
 				currency = "$";
@@ -105,7 +119,7 @@ $(document).ready(function() {
 				currency = "€";
 				break;
 		}
-		qDat = {country : country, mcusers : MCUsers, interactions : MCInteractions, product : window.product, mcinsights : MCInsights };
+		qDat = {country : country, mcusers : MCUsers, interactions : MCInteractions, product : window.product, mcinsights : MCInsights, enterprise : package };
 		$(".list").css("background-color","#BA006E");
 		$.post("/ask",qDat, function(data){
 			$(".list").append('<div class="item">' + "Monthly Price: " + currency + data.pricem.toFixed() +  "<p></p>" +  "Yearly Price: " + currency + data.pricey.toFixed() +  "<p></p>" + "One-Time Setup Price: " + currency + data.b2csetup.toFixed() + "<p></p>" + '</div>');	
@@ -116,7 +130,20 @@ $(document).ready(function() {
 	});
 });
 
-/* Marketing Cloud B2B Form */ 
+/* Marketing Cloud B2B Form */
+
+$('#packageb2b').change(function() {
+	if (this.value == "true") {
+		$('#B2bDbrecChange').text('Does the customer need additional database records beyond the 100,000 included in the Marketing Cloud Enterprise subscription?');
+		$('#B2bUsersChange').text('Does the customer need additional users beyond the 10  included in the Marketing Cloud Enterprise subscription?');
+		$('#B2bInsightsChange').text('Does the customer need additional email insights opens beyond the 400,000 included in the Marketing Cloud Enterprise subscription? ');
+	}
+	else {
+		$('#B2bDbrecChange').text('Does the customer need additional database records beyond the 50,000 included in the Marketing Cloud Standard subscription?');
+		$('#B2bUsersChange').text('Does the customer need additional users beyond the 5  included in the Marketing Cloud Standard subscription?');
+		$('#B2cInsightsChange').text('Does the customer need additional email insights opens beyond the 200,000 included in the Marketing Cloud Standard subscription?');
+	}
+});
 
 $(document).ready(function() {
 	$('#button-mcb2b').click(function() {
@@ -127,6 +154,7 @@ $(document).ready(function() {
 		var MCDBRec = $('input[name=DBRecords]').val();
 		var MCInsights = $('input[name=MCInsightsB2B]').val();
 		var currency = "$";
+		var package = $('#packageb2b').val();
 		switch (country) {
 			case "US":
 				currency = "$";
@@ -159,7 +187,7 @@ $(document).ready(function() {
 				currency = "€";
 				break;
 		}
-		qDat = {country : country, mcusers : MCUsers, dbrec : MCDBRec, product : window.product , mcinsights : MCInsights};
+		qDat = {country : country, mcusers : MCUsers, dbrec : MCDBRec, product : window.product , mcinsights : MCInsights, enterprise : package };
 		$(".list").css("background-color","#00B2EF");
 		$.post("/ask",qDat, function(data){
 			$(".list").append('<div class="item">' + "Monthly Price: " + currency + data.pricem.toFixed() +  "<p></p>" +  "Yearly Price: " + currency + data.pricey.toFixed() +  "<p></p>" + "One-Time Setup Price: " + currency + data.b2bsetup.toFixed() + "<p></p>" + '</div>');
