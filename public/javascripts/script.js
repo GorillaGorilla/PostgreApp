@@ -77,6 +77,8 @@ $('#packageb2c').change(function() {
 });
 
 
+
+
 $(document).ready(function() {
 	$('#button-mc').click(function() {
 		$(".list").html("");

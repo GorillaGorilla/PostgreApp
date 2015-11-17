@@ -176,13 +176,32 @@ app.post('/ask', function (req, res){
 		"FROM public." + tabName + " \n" +
 		"WHERE (part_number = 'D1IKXLL')";
 		console.log("MCB2C query1: " + q1);
+		
+		
+		if (req.body.enterprise == true){
+//			B2B enterprise
+			var q2 = "SELECT part_number,  srp_ref \n " +
+			"FROM public." + tabName +  "\n " +
+				"WHERE part_number = 'D1K5TLL' \n " +
+				"OR part_number = 'D1ILILL' \n " +
+				"OR part_number = 'D1ILKLL' \n " +
+				"OR part_number = 'D1K61LL'";
+			
+			
+			
+			
+		}else{
+//			B2B standard
+			var q2 = "SELECT part_number,  srp_ref \n " +
+			"FROM public." + tabName +  "\n " +
+				"WHERE part_number = 'D1IKBLL' \n " +
+				"OR part_number = 'D1ILILL' \n " +
+				"OR part_number = 'D1ILKLL' \n " +
+				"OR part_number = 'D1ILMLL'";
+			
+		}
 
-		var q2 = "SELECT part_number,  srp_ref \n " +
-		"FROM public." + tabName +  "\n " +
-			"WHERE part_number = 'D1IKBLL' \n " +
-			"OR part_number = 'D1ILILL' \n " +
-			"OR part_number = 'D1ILKLL' \n " +
-			"OR part_number = 'D1ILMLL'";
+		
 
 		console.log("MCB2C query2: " + q2);
 		var client = new pg.Client(postgre_conn_string);
@@ -244,7 +263,7 @@ app.post('/ask', function (req, res){
 		
 
 
-		if (req.enterprise == true){
+		if (req.body.enterprise == true){
 //			B2B enterprise
 			var q2 = "SELECT part_number,  srp_ref \n " +
 					"FROM public." + tabName +  "\n " +
