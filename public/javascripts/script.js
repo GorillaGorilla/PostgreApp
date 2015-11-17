@@ -88,7 +88,7 @@ $(document).ready(function() {
 		var MCInteractions = $('input[name=MCInteractions]').val();
 		var MCInsights = $('input[name=MCInsights]').val();
 		var currency = "$";
-		var package = $('#packageb2c').val();
+		var type = $('#packageb2c').val();
 		switch (country) {
 			case "US":
 				currency = "$";
@@ -121,7 +121,7 @@ $(document).ready(function() {
 				currency = "€";
 				break;
 		}
-		qDat = {country : country, mcusers : MCUsers, interactions : MCInteractions, product : window.product, mcinsights : MCInsights, enterprise : package };
+		qDat = {country : country, mcusers : MCUsers, interactions : MCInteractions, product : window.product, mcinsights : MCInsights, enterprise : type };
 		$(".list").css("background-color","#BA006E");
 		$.post("/ask",qDat, function(data){
 			$(".list").append('<div class="item">' + "Monthly Price: " + currency + data.pricem.toFixed() +  "<p></p>" +  "Yearly Price: " + currency + data.pricey.toFixed() +  "<p></p>" + "One-Time Setup Price: " + currency + data.b2csetup.toFixed() + "<p></p>" + '</div>');	

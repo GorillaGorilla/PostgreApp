@@ -178,7 +178,7 @@ app.post('/ask', function (req, res){
 		console.log("MCB2C query1: " + q1);
 		
 		
-		if (req.body.enterprise == true){
+		if (req.body.enterprise == "true"){
 //			B2B enterprise
 			var q2 = "SELECT part_number,  srp_ref \n " +
 			"FROM public." + tabName +  "\n " +
@@ -263,7 +263,7 @@ app.post('/ask', function (req, res){
 		
 
 
-		if (req.body.enterprise == true){
+		if (req.body.enterprise == "true"){
 //			B2B enterprise
 			var q2 = "SELECT part_number,  srp_ref \n " +
 					"FROM public." + tabName +  "\n " +
