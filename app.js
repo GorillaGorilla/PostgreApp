@@ -185,7 +185,12 @@ app.post('/ask', function (req, res){
 				"WHERE part_number = 'D1K5TLL' \n " +
 				"OR part_number = 'D1ILILL' \n " +
 				"OR part_number = 'D1ILKLL' \n " +
-				"OR part_number = 'D1K61LL'";
+				"OR part_number = 'D1K61LL' \n " +
+					"ORDER BY \n " +
+					"part_number = 'D1K5TLL' desc, \n " +
+					"part_number = 'D1ILILL' desc, \n " +
+					"part_number = 'D1ILKLL' desc, \n " +
+					"part_number = 'D1K61LL' desc";
 			
 			
 			
@@ -270,8 +275,12 @@ app.post('/ask', function (req, res){
 					"WHERE part_number = 'D1K5VLL' \n " +
 					"OR part_number = 'D1ILILL' \n " +
 					"OR part_number = 'D1ILKLL' \n " +
-					"OR part_number = 'D1K62LL'";
-			
+					"OR part_number = 'D1K62LL' \n " +
+						"ORDER BY \n " +
+						"part_number = 'D1K5VLL' desc, \n " +
+						"part_number = 'D1ILILL' desc, \n " +
+						"part_number = 'D1ILKLL' desc, \n " +
+						"part_number = 'D1K62LL' desc"
 			
 			
 			
