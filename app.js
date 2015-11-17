@@ -132,7 +132,7 @@ countryLinks = [
 	},
 	{
 		name: "EUR",
-		table: "saas_uk_pricing"
+		table: "saas_eur_pricing"
 	},
 	{
 		name: "AUS",
