@@ -158,6 +158,10 @@ countryLinks = [
 		name: "INR",
 		table: "saas_inr_pricing"
 	},
+	{
+		name: "REAL",
+		table: "SaaS_BRL_Pricing"
+	},
 
 ];
 

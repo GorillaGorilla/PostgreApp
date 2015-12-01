@@ -76,6 +76,44 @@ $('#packageb2c').change(function() {
 	}
 });
 
+function chooseCountry(country){
+	switch (country) {
+	case "US":
+		currency = "$";
+		break;
+
+	case "UK":
+		currency = "£";
+		break;
+
+	case "AUS":
+		currency = "$";
+		break;
+
+	case "ZAR":
+		currency = "R";
+		break;
+
+	case "SGD":
+		currency = "S$";
+		break;
+
+	case "NZD":
+		currency = "$";
+		break;
+
+	case "INR":
+		currency = "₹";
+		break;
+	case "REAL":
+		currency = "R$"
+
+	default:
+		currency = "€";
+		break;
+}
+	return currency;
+};
 
 
 
