@@ -76,7 +76,7 @@ $('#packageb2c').change(function() {
 	}
 });
 
-function chooseCountry(country){
+function chooseCurrency(country){
 	switch (country) {
 	case "US":
 		currency = "$";
@@ -93,7 +93,6 @@ function chooseCountry(country){
 	case "ZAR":
 		currency = "R";
 		break;
-
 	case "SGD":
 		currency = "S$";
 		break;
@@ -101,13 +100,12 @@ function chooseCountry(country){
 	case "NZD":
 		currency = "$";
 		break;
-
 	case "INR":
 		currency = "₹";
 		break;
 	case "REAL":
 		currency = "R$"
-
+		break;
 	default:
 		currency = "€";
 		break;
@@ -127,38 +125,39 @@ $(document).ready(function() {
 		var MCInsights = $('input[name=MCInsights]').val();
 		var currency = "$";
 		var type = $('#packageb2c').val();
-		switch (country) {
-			case "US":
-				currency = "$";
-				break;
-
-			case "UK":
-				currency = "£";
-				break;
-
-			case "AUS":
-				currency = "$";
-				break;
-
-			case "ZAR":
-				currency = "R";
-				break;
-
-			case "SGD":
-				currency = "S$";
-				break;
-
-			case "NZD":
-				currency = "$";
-				break;
-
-			case "INR":
-				currency = "₹";
-				break;
-			default:
-				currency = "€";
-				break;
-		}
+//		switch (country) {
+//			case "US":
+//				currency = "$";
+//				break;
+//
+//			case "UK":
+//				currency = "£";
+//				break;
+//
+//			case "AUS":
+//				currency = "$";
+//				break;
+//
+//			case "ZAR":
+//				currency = "R";
+//				break;
+//
+//			case "SGD":
+//				currency = "S$";
+//				break;
+//
+//			case "NZD":
+//				currency = "$";
+//				break;
+//
+//			case "INR":
+//				currency = "₹";
+//				break;
+//			default:
+//				currency = "€";
+//				break;
+//		}
+		currency = chooseCurrency(country);
 		qDat = {country : country, mcusers : MCUsers, interactions : MCInteractions, product : window.product, mcinsights : MCInsights, enterprise : type };
 		$(".list").css("background-color","#BA006E");
 		$.post("/ask",qDat, function(data){
@@ -195,38 +194,7 @@ $(document).ready(function() {
 		var MCInsights = $('input[name=MCInsightsB2B]').val();
 		var currency = "$";
 		var package = $('#packageb2b').val();
-		switch (country) {
-			case "US":
-				currency = "$";
-				break;
-
-			case "UK":
-				currency = "£";
-				break;
-
-			case "AUS":
-				currency = "$";
-				break;
-
-			case "ZAR":
-				currency = "R";
-				break;
-
-			case "SGD":
-				currency = "S$";
-				break;
-
-			case "NZD":
-				currency = "$";
-				break;
-
-			case "INR":
-				currency = "₹";
-				break;
-			default:
-				currency = "€";
-				break;
-		}
+		currency = chooseCurrency(country);
 		qDat = {country : country, mcusers : MCUsers, dbrec : MCDBRec, product : window.product , mcinsights : MCInsights, enterprise : package };
 		$(".list").css("background-color","#00B2EF");
 		$.post("/ask",qDat, function(data){
@@ -248,38 +216,7 @@ $(document).ready(function() {
 		var SpopMsg = $('input[name=spopB2cMsg]').val();
 		var SpopInsights = $('#spopb2cinsights').val();
 		var currency = "$";
-		switch (country) {
-			case "US":
-				currency = "$";
-				break;
-
-			case "UK":
-				currency = "£";
-				break;
-
-			case "AUS":
-				currency = "$";
-				break;
-
-			case "ZAR":
-				currency = "R";
-				break;
-
-			case "SGD":
-				currency = "S$";
-				break;
-
-			case "NZD":
-				currency = "$";
-				break;
-
-			case "INR":
-				currency = "₹";
-				break;
-			default:
-				currency = "€";
-				break;
-		}
+		currency = chooseCurrency(country);
 		qDat = {country : country, 
 				spopmsg : SpopMsg, 
 				product : window.product,
@@ -305,38 +242,7 @@ $(document).ready(function() {
         var SpopDb = $('input[name=spopB2bDb]').val();
         var SpopInsights = $('#spopb2binsights').val();
         var currency = "$";
-		switch (country) {
-			case "US":
-				currency = "$";
-				break;
-
-			case "UK":
-				currency = "£";
-				break;
-
-			case "AUS":
-				currency = "$";
-				break;
-
-			case "ZAR":
-				currency = "R";
-				break;
-
-			case "SGD":
-				currency = "S$";
-				break;
-
-			case "NZD":
-				currency = "$";
-				break;
-
-			case "INR":
-				currency = "₹";
-				break;
-			default:
-				currency = "€";
-				break;
-		}
+        currency = chooseCurrency(country);
         qDat = {country : country,
             spopdb : SpopDb,
             product : window.product,
