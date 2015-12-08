@@ -65,14 +65,14 @@ $(document).ready(function() {
 
 $('#packageb2c').change(function() {
 	if (this.value == "true") {
-		$('#B2cInteractionsChange').text('Does the customer need additional marketing interactions beyond the 750,000 included in the Marketing Cloud Enterprise subscription?');
-		$('#B2cUsersChange').text('Does the customer need additional users beyond the 10  included in the Marketing Cloud Enterprise subscription?');
-		$('#B2cInsightsChange').text('Does the customer need additional email insights opens beyond the 400,000 included in the Marketing Cloud Enterprise subscription? ');
+		$('#B2cInteractionsChange').text('How many additional marketing interactions does the customer need beyond the annual 750,000 included in the Marketing Cloud Enterprise subscription?');
+		$('#B2cUsersChange').text('How many additional users does the customer need beyond the 10  included in the Marketing Cloud Enterprise subscription?');
+		$('#B2cInsightsChange').text('How many additional email insights opens does the customer need beyond the annual 400,000 included in the Marketing Cloud Enterprise subscription? ');
 	}
 	else {
-		$('#B2cInteractionsChange').text('Does the customer need additional marketing interactions beyond the 250,000 included in the Marketing Cloud Standard subscription?');
-		$('#B2cUsersChange').text('Does the customer need additional users beyond the 5  included in the Marketing Cloud Standard subscription?');
-		$('#B2cInsightsChange').text('Does the customer need additional email insights opens beyond the 200,000 included in the Marketing Cloud Standard subscription?');
+		$('#B2cInteractionsChange').text('How many additional marketing interactions does the customer need beyond the annual 250,000 included in the Marketing Cloud Standard subscription?');
+		$('#B2cUsersChange').text('How many additional users does the customer need beyond the 5  included in the Marketing Cloud Standard subscription?');
+		$('#B2cInsightsChange').text('How many additional email insights opens does the customer need beyond the annual 200,000 included in the Marketing Cloud Standard subscription?');
 	}
 });
 
@@ -173,14 +173,14 @@ $(document).ready(function() {
 
 $('#packageb2b').change(function() {
 	if (this.value == "true") {
-		$('#B2bDbrecChange').text('Does the customer need additional database records beyond the 100,000 included in the Marketing Cloud Enterprise subscription?');
-		$('#B2bUsersChange').text('Does the customer need additional users beyond the 10  included in the Marketing Cloud Enterprise subscription?');
-		$('#B2bInsightsChange').text('Does the customer need additional email insights opens beyond the 400,000 included in the Marketing Cloud Enterprise subscription? ');
+		$('#B2bDbrecChange').text('How many additional database records does the customer need beyond the 100,000 included in the Marketing Cloud Enterprise subscription?');
+		$('#B2bUsersChange').text('How many additional users does the customer need beyond the 10  included in the Marketing Cloud Enterprise subscription?');
+		$('#B2bInsightsChange').text('How many additional email insights opens does the customer need beyond the 400,000 included in the Marketing Cloud Enterprise subscription? ');
 	}
 	else {
-		$('#B2bDbrecChange').text('Does the customer need additional database records beyond the 50,000 included in the Marketing Cloud Standard subscription?');
-		$('#B2bUsersChange').text('Does the customer need additional users beyond the 5  included in the Marketing Cloud Standard subscription?');
-		$('#B2cInsightsChange').text('Does the customer need additional email insights opens beyond the 200,000 included in the Marketing Cloud Standard subscription?');
+		$('#B2bDbrecChange').text('How many additional database records does the customer need beyond the 50,000 included in the Marketing Cloud Standard subscription?');
+		$('#B2bUsersChange').text('How many additional users does the customer need beyond the 5  included in the Marketing Cloud Standard subscription?');
+		$('#B2cInsightsChange').text('How many additional email insights opens does the customer need beyond the 200,000 included in the Marketing Cloud Standard subscription?');
 	}
 });
 

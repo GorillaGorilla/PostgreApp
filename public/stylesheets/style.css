@@ -87,8 +87,11 @@ img {
 
 .forms-small {
   font-size: 0.6em;
-
 }
+
+.tooltip-text {
+	font-size: 0.45em;
+	}
 
 .appear-mc {
   background-color: #00B2EF;
