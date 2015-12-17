@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <!---- Load jQuery ---->
+
+	<!-- Engage Web Tracking Code -->
+
+
+	<!-- Please insert the following code between your HTML document head tags to maintain a common reference to a unique visitor across one or more external web tracked sites. -->
+	<meta name="com.silverpop.brandeddomains" content="www.pages00.net,ssp-pricing-beta.mybluemix.net" />
+	<script src="http://content.mkt00.net/lp/static/js/iMAWebCookie.js?2a07ee75-14ee1e6d83b-4097dfa4559ed783d26bfeed2dffc966&h=www.pages00.net" type="text/javascript"></script>
+	<meta name="com.silverpop.pagename" content="Home Page" />
+	<meta name="com.silverpop.webtrackingoptin" content="true"/>
+	<!---- Load jQuery ---->
     <script type="text/javascript" src="javascripts/jquery-latest.min.js"></script>
       <!---- Load jQuery UI ---->
     <link type="text/css" rel="stylesheet" href="javascripts/jquery-ui.css"/>
     <script type="text/javascript" src="javascripts/jquery.min.js"></script>
     <script type="text/javascript" src="javascripts/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="javascripts/tooltip.js"></script>
 
     <title> Product Selection</title>
-  <link type="text/css" rel="stylesheet" href="stylesheets/style.css"/>
+	<link type="text/css" rel="stylesheet" href="stylesheets/style.css"/>
 </head>
      <!-- Main Page -->
   <body>
@@ -80,23 +90,50 @@
             <option value="US">United States</option>
         </select>
           <p class="forms-big"> Please select a package</p>
-          <select id="packageb2c">
-              <option value="false">Standard</option>
-              <option value="true">Enterprise</option>
-          </select>
+		
+		
+		<div id="container">
+			<div class="tooltip-dev"> 
+				<select id="packageb2c"> 
+				<option value="false">Standard</option>
+				<option value="true">Enterprise</option>
+				</select> 
+			</div>
+			<div title="<img src=images/b2c-packages.png></img>" rel="tooltip" class="tooltip-dev2">
+				<img src="images/tooltip.png" class="tooltip-image"></img> 
+			</div>		
+		</div>
         <p class="forms-big"> Additional Marketing Interactions</p>
         <p class="forms-small" id="B2cInteractionsChange">How many additional marketing interactions does the customer need beyond the annual 250,000 included in the Marketing Cloud Standard subscription?</p>
-        <input type="text" name="MCInteractions" class="input_box">
-		<p class="tooltip-text"> Enter additional annual amount required in units (e.g. for one thousand additional interactions annually enter 1000)</p>
-        <p class="forms-big"> Additional Marketing Cloud Users</p>
+		<div id="container">
+			<div class="tooltip-dev"> 
+				<input type="text" name="MCInteractions" class="input_box">
+			</div>
+			<div title="Enter additional annual amount required in units (e.g. for one thousand additional interactions annually enter 1000)" rel="tooltip" class="tooltip-dev2">
+				<img src="images/tooltip.png" class="tooltip-image"></img> 
+			</div>		
+		</div>
+       <p class="forms-big"> Additional Marketing Cloud Users</p>
         <p class="forms-small" id="B2cUsersChange">How many additional users does the customer need beyond the 5 included in the Marketing Cloud Standard subscription? </p>
-        <input type="text" name="MCUsers" class="input_box">
-		<p class="tooltip-text"> Enter additional users required in units (e.g. for five additional users enter 5)</p>
-        <p class="forms-big"> Additional Marketing Cloud Email Insights Opens</p>
+		<div id="container">
+			<div class="tooltip-dev"> 		
+				<input type="text" name="MCUsers" class="input_box">
+			</div>
+			<div title="Enter additional users required in units (e.g. for five additional users enter 5)" rel="tooltip" class="tooltip-dev2">
+				<img src="images/tooltip.png" class="tooltip-image"></img> 
+			</div>		
+		</div>
+       <p class="forms-big"> Additional Marketing Cloud Email Insights Opens</p>
         <p class="forms-small" id="B2cInsightsChange">How many additional email insights opens does the customer need beyond the annual 200,000 included in the Marketing Cloud Standard subscription? </p>
-        <input type="text" name="MCInsights" class="input_box">
-		<p class="tooltip-text"> Enter additional annual amount required in units (e.g. for one thousand additional email insight opens annually enter 1000)</p>
-		<button type="button" id="button-mc" class="button" >Submit</button>
+ 		<div id="container">
+			<div class="tooltip-dev"> 	     
+				<input type="text" name="MCInsights" class="input_box">
+			</div>
+			<div title="Enter additional annual amount required in units (e.g. for one thousand additional email insight opens annually enter 1000)" rel="tooltip" class="tooltip-dev2">
+				<img src="images/tooltip.png" class="tooltip-image"></img> 
+			</div>		
+		</div>
+		<button type="button" id="button-mc" class="button" onClick="return ewt.trackLink({name:'auto',type:'raised_quote',link:this });">Submit</button>
         <div class="list"></div>
 		<div class="legal"> The price generated is the IBM ratecard price based on data as of 7 December 2015. <br>
 		THIS IS FOR INFORMATION PURPOSES ONLY.  THIS IS NOT A COMMITTED PRICE. <br>
@@ -141,23 +178,48 @@
             <option value="US">United States</option>
         </select>
           <p class="forms-big"> Please select a package</p>
-          <select id="packageb2b">
-              <option value="false">Standard</option>
-              <option value="true">Enterprise</option>
-          </select>
+		<div id="container">
+			<div class="tooltip-dev">           
+				<select id="packageb2b">
+					<option value="false">Standard</option>
+					<option value="true">Enterprise</option>
+				</select>
+			</div>
+			<div title="<img src=images/b2b-packages.png></img>" rel="tooltip" class="tooltip-dev2">
+				<img src="images/tooltip.png" class="tooltip-image"></img> 
+			</div>		
+		</div>
         <p class="forms-big"> Database Records</p>
         <p class="forms-small" id="B2bDbrecChange">How many additional database records does the customer need beyond the 50,000 included in the Marketing Cloud Standard subscription?</p>
-        <input type="text" name="DBRecords" class="input_box">
-		<p class="tooltip-text"> Enter additional annual amount required in units (e.g. for one thousand additional database records annually enter 1000)</p>
+		<div id="container">
+			<div class="tooltip-dev">    	
+				<input type="text" name="DBRecords" class="input_box">
+			</div>
+			<div title="Enter additional annual amount required in units (e.g. for one thousand additional database records annually enter 1000)" rel="tooltip" class="tooltip-dev2">
+				<img src="images/tooltip.png" class="tooltip-image"></img> 
+			</div>	
+		</div>
         <p class="forms-big"> Additional Marketing Cloud Users </p>
         <p class="forms-small" id="B2bUsersChange">How many additional users does the customer need beyond the 5  included in the Marketing Cloud Standard subscription?</p>
-        <input type="text" name="MCUsersB2B" class="input_box">
-		<p class="tooltip-text"> Enter additional users required in units (e.g. for five additional users enter 5)</p>
+ 		<div id="container">
+			<div class="tooltip-dev">       
+				<input type="text" name="MCUsersB2B" class="input_box">
+			</div>
+			<div title="Enter additional users required in units (e.g. for five additional users enter 5)" rel="tooltip" class="tooltip-dev2">
+				<img src="images/tooltip.png" class="tooltip-image"></img> 
+			</div>	
+		</div>
         <p class="forms-big"> Additional Marketing Cloud Email Insights Opens</p>
         <p class="forms-small" id="B2bInsightsChange">How many additional email insights opens does the customer need beyond the 200,000 included in the Marketing Cloud Standard subscription? </p>
-        <input type="text" name="MCInsightsB2B" class="input_box">
-		<p class="tooltip-text"> Enter additional annual amount required in units (e.g. for one thousand additional email insight opens annually enter 1000)</p>
-		<button type="button" id="button-mcb2b" class="button" >Submit</button>
+ 		<div id="container">
+			<div class="tooltip-dev">        
+				<input type="text" name="MCInsightsB2B" class="input_box">
+			</div>
+			<div title="Enter additional annual amount required in units (e.g. for one thousand additional email insight opens annually enter 1000)" rel="tooltip" class="tooltip-dev2">
+				<img src="images/tooltip.png" class="tooltip-image"></img> 
+			</div>
+		</div>
+		<button type="button" id="button-mcb2b" class="button" onClick="return ewt.trackLink({name:'auto',type:'raised_quote',link:this });">Submit</button>
         <div class="list"></div>
 		<div class="legal"> The price generated is the IBM ratecard price based on data as of 7 December 2015. <br>
 		THIS IS FOR INFORMATION PURPOSES ONLY.  THIS IS NOT A COMMITTED PRICE. <br>
@@ -203,22 +265,31 @@
         </select>
         <p class="forms-big"> Digital messages</p>
         <p class="forms-small"> What is the customer's monthly digital message volume? </p>
-		<input type="text" name="spopB2cMsg" class="input_box">
-		<p class="tooltip-text"> Enter annual amount required in units (e.g. for one thousand digital messages annually enter 1000)</p>
+ 		<div id="container">
+			<div class="tooltip-dev">       
+				<input type="text" name="spopB2cMsg" class="input_box">
+			</div>
+			<div title="Enter annual amount required in units (e.g. for one hundred thousand digital messages annually enter 100000)" rel="tooltip" class="tooltip-dev2">
+				<img src="images/tooltip.png" class="tooltip-image"></img> 
+			</div>	
+		</div>
 		<p class="forms-big"> Email Insights</p>
-        <p class="forms-small"> Bronze : Select this option for up to 10 email previews and 10,000 email opens per month  </p>
-		<p class="forms-small"> Silver : Select this option for up to 50 email previews and 200,000 email opens per month </p>
-		<p class="forms-small"> Gold : Select this option for up to 500 email previews and 2,000,000 email opens per month </p>
-		<p class="forms-small"> Platinum : Select this option for up to 1,000 email previews and 5,000,000 email opens per month </p>
-		<select id="spopb2cinsights">
-          <option value="none">None</option>
-          <option value="bronze">Bronze</option>
-          <option value="silver">Silver</option>
-		  <option value="gold">Gold</option>
-		  <option value="platinum">Platinum</option>
-        </select>
-		<p></p>
-		<button type="button" id="button-spopb2c" class="button" >Submit</button>
+		<p class="forms-small"> Please select the appropriate package based on the number of email previews and email opens that the customer requires. 	 </p>
+ 		<div id="container">
+			<div class="tooltip-dev"> 
+				<select id="spopb2cinsights">
+					<option value="none">None</option>
+					<option value="bronze">Bronze</option>
+					<option value="silver">Silver</option>
+					<option value="gold">Gold</option>
+					<option value="platinum">Platinum</option>
+				</select>
+			</div>
+			<div title="Bronze : Select this option for up to 10 email previews and 10,000 email opens per month <br><br> Silver : Select this option for up to 50 email previews and 200,000 email opens per month <br><br> Gold : Select this option for up to 500 email previews and 2,000,000 email opens per month <br><br> Platinum : Select this option for up to 1,000 email previews and 5,000,000 email opens per month" rel="tooltip" class="tooltip-dev2">
+				<img src="images/tooltip.png" class="tooltip-image"></img> 
+			</div>	
+		</div>
+		<button type="button" id="button-spopb2c" class="button" onClick="return ewt.trackLink({name:'auto',type:'raised_quote',link:this });">Submit</button>
         <div class="list"></div>
 		<div class="legal"> The price generated is the IBM ratecard price based on data as of 7 December 2015. <br>
 		THIS IS FOR INFORMATION PURPOSES ONLY.  THIS IS NOT A COMMITTED PRICE. <br>
@@ -265,22 +336,31 @@
         </select>
         <p class="forms-big"> Database Records </p>
         <p class="forms-small"> What is the customer's database contacts volume ? </p>
-        <input type="text" name="spopB2bDb" class="input_box">
-		<p class="tooltip-text"> Enter annual amount required in units (e.g. for one thousand database records annually enter 1000)</p>
-        <p class="forms-big"> Email Insights</p>
-        <p class="forms-small"> Bronze : Select this option for up to 10 email previews and 10,000 email opens per month  </p>
-        <p class="forms-small"> Silver : Select this option for up to 50 email previews and 200,000 email opens per month </p>
-        <p class="forms-small"> Gold : Select this option for up to 500 email previews and 2,000,000 email opens per month </p>
-        <p class="forms-small"> Platinum : Select this option for up to 1,000 email previews and 5,000,000 email opens per month </p>
-        <select id="spopb2binsights">
-          <option value="none">None</option>
-          <option value="bronze">Bronze</option>
-          <option value="silver">Silver</option>
-          <option value="gold">Gold</option>
-          <option value="platinum">Platinum</option>
-        </select>
-        <p></p>
-        <button type="button" id="button-spopb2b" class="button" >Submit</button>
+ 		<div id="container">
+			<div class="tooltip-dev">    		
+				<input type="text" name="spopB2bDb" class="input_box">
+			</div>
+			<div title="Enter annual amount required in units (e.g. for one thousand database records annually enter 1000)" rel="tooltip" class="tooltip-dev2">
+				<img src="images/tooltip.png" class="tooltip-image"></img> 
+			</div>	
+		</div>
+		<p class="forms-big"> Email Insights</p>
+		<p class="forms-small"> Please select the appropriate package based on the number of email previews and email opens that the customer requires. 	 </p>
+ 		<div id="container">
+			<div class="tooltip-dev"> 
+				<select id="spopb2binsights">
+					<option value="none">None</option>
+					<option value="bronze">Bronze</option>
+					<option value="silver">Silver</option>
+					<option value="gold">Gold</option>
+					<option value="platinum">Platinum</option>
+				</select>
+			</div>
+			<div title="Bronze : Select this option for up to 10 email previews and 10,000 email opens per month <br><br> Silver : Select this option for up to 50 email previews and 200,000 email opens per month <br><br> Gold : Select this option for up to 500 email previews and 2,000,000 email opens per month <br><br> Platinum : Select this option for up to 1,000 email previews and 5,000,000 email opens per month" rel="tooltip" class="tooltip-dev2">
+				<img src="images/tooltip.png" class="tooltip-image"></img> 
+			</div>	
+		</div>
+        <button type="button" id="button-spopb2b" class="button" onClick="return ewt.trackLink({name:'auto',type:'raised_quote',link:this });">Submit</button>
         <div class="list"></div>
         <div class="legal"> The price generated is the IBM ratecard price based on data as of 7 December 2015. <br>
           THIS IS FOR INFORMATION PURPOSES ONLY.  THIS IS NOT A COMMITTED PRICE. <br>
