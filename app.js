@@ -162,6 +162,14 @@ countryLinks = [
 		name: "REAL",
 		table: "SaaS_BRL_Pricing"
 	},
+		{
+		name: "DNK",
+		table: "SaaS_DNK_Pricing"
+	},
+		{
+		name: "SWE",
+		table: "SaaS_SWE_Pricing"
+	},
 
 ];
 

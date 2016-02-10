@@ -104,7 +104,13 @@ function chooseCurrency(country){
 		currency = "₹";
 		break;
 	case "REAL":
-		currency = "R$"
+		currency = "R$";
+		break;
+	case "SWE":
+		currency = "SEK";
+		break;
+	case "DNK":
+		currency = "DKK";
 		break;
 	default:
 		currency = "€";
