@@ -119,6 +119,12 @@ function chooseCurrency(country){
 	case "ISR":
 		currency = "$";
 		break;
+	case "AFRICA":
+		currency = "$";
+		break;
+	case "UAE":
+		currency = "$";
+		break;		
 	default:
 		currency = "€";
 		break;

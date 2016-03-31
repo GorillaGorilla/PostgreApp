@@ -173,8 +173,15 @@ countryLinks = [
 		{
 		name: "ISR",
 		table: "SaaS_ISR_Pricing"
-	}	
-
+	},	
+		{
+		name: "AFRICA",
+		table: "SaaS_AFRICA_Pricing"
+	},	
+		{
+		name: "UAE",
+		table: "SaaS_UAE_Pricing"
+	}		
 ];
 
 app.post('/ask', function (req, res){
