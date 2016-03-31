@@ -170,6 +170,10 @@ countryLinks = [
 		name: "SWE",
 		table: "SaaS_SWE_Pricing"
 	},
+		{
+		name: "ISR",
+		table: "SaaS_ISR_Pricing"
+	}	
 
 ];
 
