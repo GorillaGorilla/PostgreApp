@@ -68,15 +68,20 @@ $(document).ready(function() {
 /* Marketing Cloud B2C Form */
 
 $('#packageb2c').change(function() {
-	if (this.value == "true") {
+	if (this.value == "enterprise") {
 		$('#B2cInteractionsChange').text('How many additional marketing interactions does the customer need beyond the monthly 750,000 included in the Marketing Cloud Enterprise subscription?');
-		$('#B2cUsersChange').text('How many additional users does the customer need beyond the 10  included in the Marketing Cloud Enterprise subscription?');
+		$('#B2cUsersChange').text('How many additional users does the customer need beyond the 20  included in the Marketing Cloud Enterprise subscription?');
 		$('#B2cInsightsChange').text('How many additional email insights opens does the customer need beyond the monthly 400,000 included in the Marketing Cloud Enterprise subscription? ');
 	}
-	else {
+	else if (this.value == "standard") {
 		$('#B2cInteractionsChange').text('How many additional marketing interactions does the customer need beyond the monthly 250,000 included in the Marketing Cloud Standard subscription?');
-		$('#B2cUsersChange').text('How many additional users does the customer need beyond the 5  included in the Marketing Cloud Standard subscription?');
+		$('#B2cUsersChange').text('How many additional users does the customer need beyond the 10  included in the Marketing Cloud Standard subscription?');
 		$('#B2cInsightsChange').text('How many additional email insights opens does the customer need beyond the monthly 200,000 included in the Marketing Cloud Standard subscription?');
+	}
+	else if (this.value == "essentials") {
+		$('#B2cInteractionsChange').text('How many additional marketing interactions does the customer need beyond the monthly 50,000 included in the Marketing Cloud Essential subscription?');
+		$('#B2cUsersChange').text('How many additional users does the customer need beyond the 5  included in the Marketing Cloud Essential subscription?');
+		$('#B2cInsightsChange').text('How many additional email insights opens does the customer need beyond the monthly 10,000 included in the Marketing Cloud Standard subscription?');
 	}
 });
 
@@ -191,15 +196,20 @@ $(document).ready(function() {
 /* Marketing Cloud B2B Form */
 
 $('#packageb2b').change(function() {
-	if (this.value == "true") {
+	if (this.value == "enterprise") {
 		$('#B2bDbrecChange').text('How many additional database records does the customer need beyond the 100,000 included in the Marketing Cloud Enterprise subscription?');
-		$('#B2bUsersChange').text('How many additional users does the customer need beyond the 10  included in the Marketing Cloud Enterprise subscription?');
+		$('#B2bUsersChange').text('How many additional users does the customer need beyond the 20  included in the Marketing Cloud Enterprise subscription?');
 		$('#B2bInsightsChange').text('How many additional email insights opens does the customer need beyond the monthly 400,000 included in the Marketing Cloud Enterprise subscription? ');
 	}
-	else {
+	else if (this.value == "standard") {
 		$('#B2bDbrecChange').text('How many additional database records does the customer need beyond the 50,000 included in the Marketing Cloud Standard subscription?');
-		$('#B2bUsersChange').text('How many additional users does the customer need beyond the 5  included in the Marketing Cloud Standard subscription?');
-		$('#B2cInsightsChange').text('How many additional email insights opens does the customer need beyond the monthly 200,000 included in the Marketing Cloud Standard subscription?');
+		$('#B2bUsersChange').text('How many additional users does the customer need beyond the 10  included in the Marketing Cloud Standard subscription?');
+		$('#B2bInsightsChange').text('How many additional email insights opens does the customer need beyond the monthly 200,000 included in the Marketing Cloud Standard subscription?');
+	}
+	else if (this.value == "essentials") {
+		$('#B2bDbrecChange').text('How many additional database records does the customer need beyond the 10,000 included in the Marketing Cloud Essentials subscription?');
+		$('#B2bUsersChange').text('How many additional users does the customer need beyond the 5  included in the Marketing Cloud Essentials subscription?');
+		$('#B2bInsightsChange').text('How many additional email insights opens does the customer need beyond the monthly 10,000 included in the Marketing Cloud Essentials subscription?');
 	}
 });
 

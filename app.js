@@ -201,10 +201,10 @@ app.post('/ask', function (req, res){
 		console.log("MCB2C query1: " + q1);
 		
 		
-		if (req.body.enterprise == "true"){
-//			B2B enterprise
+		if (req.body.enterprise == "enterprise"){
+//			B2C enterprise
 			var q2 = "SELECT part_number,  srp_ref \n " +
-			"FROM public." + tabName +  "\n " +
+				"FROM public." + tabName +  "\n " +
 				"WHERE part_number = 'D1K5TLL' \n " +
 				"OR part_number = 'D1ILILL' \n " +
 				"OR part_number = 'D1ILKLL' \n " +
@@ -214,19 +214,34 @@ app.post('/ask', function (req, res){
 					"part_number = 'D1ILILL' desc, \n " +
 					"part_number = 'D1ILKLL' desc, \n " +
 					"part_number = 'D1K61LL' desc";
-			
-			
-			
-			
-		}else{
-//			B2B standard
+		}
+		else if (req.body.enterprise == "standard") {
+//			B2C standard
 			var q2 = "SELECT part_number,  srp_ref \n " +
-			"FROM public." + tabName +  "\n " +
+				"FROM public." + tabName +  "\n " +
 				"WHERE part_number = 'D1IKBLL' \n " +
 				"OR part_number = 'D1ILILL' \n " +
 				"OR part_number = 'D1ILKLL' \n " +
-				"OR part_number = 'D1ILMLL'";
-			
+				"OR part_number = 'D1K61LL' \n " +
+					"ORDER BY \n " +
+					"part_number = 'D1IKBLL' desc, \n " +
+					"part_number = 'D1ILILL' desc, \n " +
+					"part_number = 'D1ILKLL' desc, \n " +
+					"part_number = 'D1K61LL' desc";
+		}
+		else if (req.body.enterprise == "essentials") {
+// 			B2C Essentials
+			var q2 = "SELECT part_number,  srp_ref \n " +
+				"FROM public." + tabName +  "\n " +
+				"WHERE part_number = 'D1MXNLL' \n " +
+				"OR part_number = 'D1ILILL' \n " +
+				"OR part_number = 'D1ILKLL' \n " +
+				"OR part_number = 'D1K61LL' \n " +
+					"ORDER BY \n " +
+					"part_number = 'D1MXNLL' desc, \n " +
+					"part_number = 'D1ILILL' desc, \n " +
+					"part_number = 'D1ILKLL' desc, \n " +
+					"part_number = 'D1K61LL' desc";
 		}
 
 		
@@ -291,8 +306,8 @@ app.post('/ask', function (req, res){
 		
 
 
-		if (req.body.enterprise == "true"){
-//			B2B enterprise
+		if (req.body.enterprise == "enterprise"){
+		//			B2B enterprise
 			var q2 = "SELECT part_number,  srp_ref \n " +
 					"FROM public." + tabName +  "\n " +
 					"WHERE part_number = 'D1K5VLL' \n " +
@@ -304,18 +319,34 @@ app.post('/ask', function (req, res){
 						"part_number = 'D1ILILL' desc, \n " +
 						"part_number = 'D1ILKLL' desc, \n " +
 						"part_number = 'D1K62LL' desc"
-			
-			
-			
-		}else{
-//			B2B standard
+		}
+		else if (req.body.enterprise == "standard") {
+		//			B2B standard
 			var q2 = "SELECT part_number,  srp_ref \n " +
 					"FROM public." + tabName +  "\n " +
 					"WHERE part_number = 'D1ILBLL' \n " +
 					"OR part_number = 'D1ILILL' \n " +
 					"OR part_number = 'D1ILKLL' \n " +
-					"OR part_number = 'D1ILNLL'";
-			
+					"OR part_number = 'D1ILNLL'\n " +
+						"ORDER BY \n " +
+						"part_number = 'D1ILBLL' desc, \n " +
+						"part_number = 'D1ILILL' desc, \n " +
+						"part_number = 'D1ILKLL' desc, \n " +
+						"part_number = 'D1ILNLL' desc";
+		}
+		else if (req.body.enterprise == "essentials") {
+		//			B2B essentials
+			var q2 = "SELECT part_number,  srp_ref \n " +
+				"FROM public." + tabName +  "\n " +
+				"WHERE part_number = 'D1MXPLL' \n " +
+				"OR part_number = 'D1ILILL' \n " +
+				"OR part_number = 'D1ILKLL' \n " +
+				"OR part_number = 'D1ILNLL'\n " +
+					"ORDER BY \n " +
+					"part_number = 'D1MXPLL' desc, \n " +
+					"part_number = 'D1ILILL' desc, \n " +
+					"part_number = 'D1ILKLL' desc, \n " +
+					"part_number = 'D1ILNLL' desc";
 		}
 		
 
