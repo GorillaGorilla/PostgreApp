@@ -103,7 +103,7 @@ function chooseCurrency(country){
 		currency = "R";
 		break;
 	case "SGD":
-		currency = "S$";
+		currency = "$";
 		break;
 
 	case "NZD":
@@ -167,7 +167,7 @@ $(document).ready(function() {
 //				break;
 //
 //			case "SGD":
-//				currency = "S$";
+//				currency = "$";
 //				break;
 //
 //			case "NZD":
