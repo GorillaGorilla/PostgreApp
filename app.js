@@ -110,6 +110,8 @@ app.get('/failure', function(req, res) {
 
 app.get('*', ensureAuthenticated);
 
+app.post('*', ensureAuthenticated);
+
 // End of Single Sign on Stuff
 
 // Set up DB Connections
